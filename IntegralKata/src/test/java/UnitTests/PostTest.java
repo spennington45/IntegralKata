@@ -8,25 +8,26 @@ import java.sql.Timestamp;
 
 import org.junit.jupiter.api.Test;
 
+import Models.Post;
+
 
 class PostTest {
 
 	@Test
 	public void postModelGettersAndSettersTest() {
 		Post post = new Post();
-		
-		Date date = new Date();
-		Timestamp timestamp = new Timestamp(date.getTime());
+		Timestamp timestamp = Timestamp.valueOf("2021-02-21 11:21:59.738");
 		post.setTimeStamp(timestamp);
 		post.setUserId(1);
 		post.setMessage("This is a test message!");
 
 		
-		assertEquals("testUserName", post.getTimeStamp());
 		
-		assertEquals("firstName", post.getUserId());
+		assertEquals(timestamp, post.getTimeStamp());
 		
-		assertEquals("lastName", post.getMessage());
+		assertEquals(1, post.getUserId());
+		
+		assertEquals("This is a test message!", post.getMessage());
 		
 	}
 }
