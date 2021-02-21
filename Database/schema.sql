@@ -17,3 +17,5 @@ INSERT INTO users (id, userName, firstName, lastName, password) VALUES (2, 'Bob'
 INSERT INTO users (id, userName, firstName, lastName, password) VALUES (3, 'Charlie', 'Charlie', 'Parker', 'password');
 
 COMMIT TRANSACTION;
+
+SELECT * FROM users;
