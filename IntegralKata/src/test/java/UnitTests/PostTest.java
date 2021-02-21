@@ -21,8 +21,6 @@ class PostTest {
 		post.setUserId(1);
 		post.setMessage("This is a test message!");
 
-		
-		
 		assertEquals(timestamp, post.getTimeStamp());
 		
 		assertEquals(1, post.getUserId());
