@@ -9,5 +9,5 @@ export PGPASSWORD=${password}
 echo Starting script...
 psql -U ${username} -f "./dropdb.sql" &&
 createdb -U ${username} intigral &&
-psql -U ${username} -d intigral -f "./intigral.sql" 
+psql -U ${username} -d intigral -f "./schema.sql" 
 echo Schema has been run ending script.

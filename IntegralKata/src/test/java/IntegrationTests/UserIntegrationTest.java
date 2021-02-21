@@ -12,6 +12,7 @@ import org.junit.Test;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.datasource.SingleConnectionDataSource;
 
+import JDBCDAOs.JDBCUserDAO;
 import Models.User;
 
 
@@ -54,7 +55,11 @@ public class UserIntegrationTest {
 	@After
 	public void rollback() {
 		System.out.println("After test");
-		dataSource.getConnection().rollback();
+		try {
+			dataSource.getConnection().rollback();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	@Test
