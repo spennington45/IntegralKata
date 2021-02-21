@@ -1,7 +1,6 @@
 package IntegrationTests;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.jupiter.api.Assertions.*;
 
 import java.sql.SQLException;
 import java.sql.Timestamp;
@@ -12,15 +11,16 @@ import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.datasource.SingleConnectionDataSource;
 
+import JDBCDAOs.JDBCPostDAO;
 import JDBCDAOs.JDBCUserDAO;
 import Models.Post;
 import Models.User;
 
-class PostIntegrationTest {
+public class PostIntegrationTest {
 
 	private static SingleConnectionDataSource dataSource;
 	private JDBCPostDAO postDao;
@@ -51,7 +51,7 @@ class PostIntegrationTest {
 		System.out.println("Before test");
 		String sqlInsertUser = "INSERT INTO users (id, userName, firstName, lastName, password) VALUES (12345, 'myUser', 'Me', 'lastNameMe', 'password');";
 		JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
-		String sqlInsertPost = "INSERT INTO post (time_stamp, uesrid, message) VALUES (?, 12345, 'This is a test message');";
+		String sqlInsertPost = "INSERT INTO post (id, time_stamp, userId, message) VALUES (123, ?, 12345, 'This is a test message');";
 		jdbcTemplate.update(sqlInsertUser);
 		jdbcTemplate.update(sqlInsertPost, timestamp);
 		postDao = new JDBCPostDAO(jdbcTemplate);
